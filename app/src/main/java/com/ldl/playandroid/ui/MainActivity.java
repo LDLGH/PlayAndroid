@@ -36,7 +36,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         fm = getSupportFragmentManager();
         mNavigation.setOnNavigationItemSelectedListener(this);
         mNavigation.setSelectedItemId(R.id.navigation_home);
-        //我改变了2
+        //新的分支
     }
 
     @Override
