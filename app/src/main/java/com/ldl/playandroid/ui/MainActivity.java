@@ -1,5 +1,6 @@
 package com.ldl.playandroid.ui;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
@@ -15,7 +16,7 @@ import com.ldl.playandroid.ui.my.MyFragment;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.navigation)
     BottomNavigationView mNavigation;
@@ -44,47 +45,47 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         return null;
     }
 
-    private FragmentTransaction hideFragment(){
+    @SuppressLint("CommitTransaction")
+    private void hideFragment() {
         ft = fm.beginTransaction();
-        if(homeFragment != null){
+        if (homeFragment != null) {
             ft.hide(homeFragment);
         }
-        if(knowledgeFragment != null){
+        if (knowledgeFragment != null) {
             ft.hide(knowledgeFragment);
         }
-        if(myFragment != null){
+        if (myFragment != null) {
             ft.hide(myFragment);
         }
-        return  ft;
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         hideFragment();
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.navigation_home:
-                if(homeFragment == null){
+                if (homeFragment == null) {
                     homeFragment = new HomeFragment();
                     ft.add(R.id.layout_fragment, homeFragment, "homeFragment");
-                }else {
+                } else {
                     ft.show(homeFragment);
                 }
                 ft.commitAllowingStateLoss();
                 break;
             case R.id.navigation_knowledgesystem:
-                if(knowledgeFragment == null){
+                if (knowledgeFragment == null) {
                     knowledgeFragment = new KnowledgeFragment();
-                    ft.add(R.id.layout_fragment, knowledgeFragment,"knowledgeFragment");
-                }else{
+                    ft.add(R.id.layout_fragment, knowledgeFragment, "knowledgeFragment");
+                } else {
                     ft.show(knowledgeFragment);
                 }
                 ft.commitAllowingStateLoss();
                 break;
             case R.id.navigation_my:
-                if(myFragment == null){
+                if (myFragment == null) {
                     myFragment = new MyFragment();
-                    ft.add(R.id.layout_fragment, myFragment,"myFragment");
-                }else {
+                    ft.add(R.id.layout_fragment, myFragment, "myFragment");
+                } else {
                     ft.show(myFragment);
                 }
                 ft.commitAllowingStateLoss();
