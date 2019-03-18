@@ -5,7 +5,10 @@ import android.view.View;
 import com.ldl.playandroid.R;
 import com.ldl.playandroid.base.BaseContract;
 import com.ldl.playandroid.base.BaseFragment;
-
+/**
+ * Author：LDL Time：2019/3/4
+ * Class Comment：
+ */
 public class MyFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {
