@@ -1,2 +1,2 @@
 # PlayAndroid
-采用MVP模式搭建框架
+采用组件化以及MVP模式开发
