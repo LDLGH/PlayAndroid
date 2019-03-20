@@ -1,8 +1,8 @@
-package com.ldl.playandroid.net;
+package com.example.baselibrary.net;
 
 import com.blankj.utilcode.util.NetworkUtils;
-import com.ldl.playandroid.base.App;
-import com.ldl.playandroid.constant.Constant;
+import com.example.baselibrary.base.BaseModuleApplication;
+import com.example.baselibrary.constant.Constant;
 
 import java.io.File;
 import java.io.IOException;
@@ -84,7 +84,7 @@ public class RetrofitManager {
     private static OkHttpClient getOkHttpClient() {
         if (mOkHttpClient == null) {
             synchronized (RetrofitManager.class) {
-                Cache cache = new Cache(new File(App.getAppContext().getCacheDir(), "HttpCache"), 1024 * 1024 * 100);
+                Cache cache = new Cache(new File(BaseModuleApplication.getAppContext().getCacheDir(), "HttpCache"), 1024 * 1024 * 100);
                 if (mOkHttpClient == null) {
                     mOkHttpClient = new OkHttpClient.Builder().cache(cache)
                             .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)

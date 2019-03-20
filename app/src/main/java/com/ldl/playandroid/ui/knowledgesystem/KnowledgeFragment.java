@@ -2,9 +2,9 @@ package com.ldl.playandroid.ui.knowledgesystem;
 
 import android.view.View;
 
+import com.example.baselibrary.base.BaseContract;
+import com.example.baselibrary.base.BaseFragment;
 import com.ldl.playandroid.R;
-import com.ldl.playandroid.base.BaseContract;
-import com.ldl.playandroid.base.BaseFragment;
 
 public class KnowledgeFragment extends BaseFragment {
     @Override

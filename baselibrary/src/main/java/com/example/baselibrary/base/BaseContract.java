@@ -1,4 +1,4 @@
-package com.ldl.playandroid.base;
+package com.example.baselibrary.base;
 
 import com.trello.rxlifecycle2.LifecycleTransformer;
 

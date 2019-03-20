@@ -1,10 +1,10 @@
-package com.ldl.playandroid.net;
+package com.example.baselibrary.net;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.ldl.playandroid.base.App;
+import com.example.baselibrary.base.BaseModuleApplication;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -29,7 +29,7 @@ public class PersistentCookieStore {
     private final SharedPreferences cookiePrefs;
 
     public PersistentCookieStore() {
-        cookiePrefs = App.getAppContext().getSharedPreferences(COOKIE_PREFS, 0);
+        cookiePrefs = BaseModuleApplication.getAppContext().getSharedPreferences(COOKIE_PREFS, 0);
         cookies = new HashMap<>();
 
         //将持久化的cookies缓存到内存中 即map cookies

@@ -1,22 +1,21 @@
 package com.ldl.playandroid.ui.home;
 
-import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.ToastUtils;
-import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.example.baselibrary.base.BaseFragment;
+import com.example.baselibrary.router.RouterList;
 import com.ldl.playandroid.R;
-import com.ldl.playandroid.base.BaseFragment;
 import com.ldl.playandroid.bean.entity.Article;
-import com.ldl.playandroid.ui.WebActivity;
+
+import java.util.Objects;
 
 import butterknife.BindView;
 
-public class HomeFragment extends BaseFragment<HomePresenter> implements HomeContract.View{
+public class HomeFragment extends BaseFragment<HomePresenter> implements HomeContract.View {
 
     @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout mSwipeRefreshLayout;
@@ -36,33 +35,14 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         rv_article.setLayoutManager(new LinearLayoutManager(getActivity()));
         rv_article.setAdapter(homeAdapter);
         homeAdapter.setEnableLoadMore(false);
-        homeAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Intent intent = new Intent(getActivity(),WebActivity.class);
-                intent.putExtra("url",homeAdapter.getItem(position).getLink());
-                startActivity(intent);
-            }
-        });
-        homeAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
-            @Override
-            public void onLoadMoreRequested() {
-                mPresenter.loadMore();
-            }
-        },rv_article);
-        SwipeRefreshLayout.OnRefreshListener listener = new SwipeRefreshLayout.OnRefreshListener(){
-            public void onRefresh(){
-                mPresenter.refresh();
-            }
-        };
+        homeAdapter.setOnItemClickListener((adapter, view1, position) -> ARouter.getInstance().build(RouterList.HomeDetailActivity.path)
+                .withString(RouterList.HomeDetailActivity.key_url, Objects.requireNonNull(homeAdapter.getItem(position)).getLink())
+                .navigation());
+        homeAdapter.setOnLoadMoreListener(() -> mPresenter.loadMore(), rv_article);
+        SwipeRefreshLayout.OnRefreshListener listener = () -> mPresenter.refresh();
         mSwipeRefreshLayout.setOnRefreshListener(listener);
 
-        mSwipeRefreshLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                mSwipeRefreshLayout.setRefreshing(true);
-            }
-        });
+        mSwipeRefreshLayout.post(() -> mSwipeRefreshLayout.setRefreshing(true));
         listener.onRefresh();
     }
 
@@ -72,12 +52,12 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
     }
 
     @Override
-    public void getHomeArticles(Article article,boolean isRefresh) {
-        if(isRefresh){
+    public void getHomeArticles(Article article, boolean isRefresh) {
+        if (isRefresh) {
             homeAdapter.setEnableLoadMore(true);
             mSwipeRefreshLayout.setRefreshing(false);
             homeAdapter.setNewData(article.getDatas());
-        }else {
+        } else {
             homeAdapter.loadMoreComplete();
             homeAdapter.addData(article.getDatas());
         }

@@ -1,4 +1,4 @@
-package com.ldl.playandroid.utils;
+package com.example.baselibrary.utils;
 
 import com.blankj.utilcode.util.StringUtils;
 import com.google.gson.Gson;

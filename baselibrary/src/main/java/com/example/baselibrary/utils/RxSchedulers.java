@@ -1,4 +1,4 @@
-package com.ldl.playandroid.utils;
+package com.example.baselibrary.utils;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;

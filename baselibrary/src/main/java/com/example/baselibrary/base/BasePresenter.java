@@ -1,4 +1,4 @@
-package com.ldl.playandroid.base;
+package com.example.baselibrary.base;
 
 public class BasePresenter<T extends BaseContract.BaseView> implements BaseContract.BasePresenter<T> {
 

@@ -1,13 +1,14 @@
-package com.ldl.playandroid.base;
+package com.example.baselibrary.base;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 
 import com.blankj.utilcode.util.NetworkUtils;
 import com.blankj.utilcode.util.ToastUtils;
-import com.ldl.playandroid.R;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
@@ -20,7 +21,8 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
     protected Toolbar mToolbar;
     private Unbinder unbinder;
 
-    protected abstract int getLayoutId();
+    protected abstract @LayoutRes
+    int getLayoutId();
 
     protected abstract void initView();
 
@@ -92,8 +94,8 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
     /**
      * 初始化toolbar
      */
-    private void initToolBar() {
-        mToolbar = findViewById(R.id.toolbar);
+    private void initToolBar(@IdRes int id) {
+        mToolbar = findViewById(id);
         if (mToolbar == null) {
             throw new NullPointerException("toolbar can not be null");
         }

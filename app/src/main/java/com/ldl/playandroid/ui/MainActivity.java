@@ -7,9 +7,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
 
+import com.example.baselibrary.base.BaseActivity;
+import com.example.baselibrary.base.BaseContract;
 import com.ldl.playandroid.R;
-import com.ldl.playandroid.base.BaseActivity;
-import com.ldl.playandroid.base.BaseContract;
 import com.ldl.playandroid.ui.home.HomeFragment;
 import com.ldl.playandroid.ui.knowledgesystem.KnowledgeFragment;
 import com.ldl.playandroid.ui.my.MyFragment;

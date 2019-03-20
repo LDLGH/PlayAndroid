@@ -1,6 +1,6 @@
 package com.ldl.playandroid.ui.home;
 
-import com.ldl.playandroid.base.BaseContract;
+import com.example.baselibrary.base.BaseContract;
 import com.ldl.playandroid.bean.entity.Article;
 
 public class HomeContract {

@@ -1,4 +1,4 @@
-package com.razerdp.github.com.common.router;
+package com.example.baselibrary.router;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -12,30 +12,9 @@ import java.lang.annotation.RetentionPolicy;
 public interface RouterList {
 
     @Retention(RetentionPolicy.SOURCE)
-    @interface PhotoMultiBrowserActivity {
-        String path = "/photo/browser";
-        String key_browserinfo = "browserinfo";
-        String key_maxSelectCount = "maxSelectCount";
-        String key_result = "selectedphoto";
+    @interface HomeDetailActivity {
+        String path = "/home/detail";
+        String key_url = "url";
         int requestCode = 0x20;
     }
-
-    @Retention(RetentionPolicy.SOURCE)
-    @interface PublishActivity {
-        String path = "/publish/edit";
-        String key_mode = "mode";
-        String key_photoList = "photoList";
-        int MODE_TEXT = 0x10;
-        int MODE_MULTI = 0x11;
-        int requestCode = 0x21;
-    }
-
-    @Retention(RetentionPolicy.SOURCE)
-    @interface PhotoSelectActivity {
-        String path = "/photo/select";
-        String key_maxSelectCount = "maxSelectCount";
-        String key_result = "selectedphoto";
-        int requestCode = 0x22;
-    }
-
 }

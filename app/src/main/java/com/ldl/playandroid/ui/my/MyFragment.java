@@ -2,9 +2,10 @@ package com.ldl.playandroid.ui.my;
 
 import android.view.View;
 
+import com.example.baselibrary.base.BaseContract;
+import com.example.baselibrary.base.BaseFragment;
 import com.ldl.playandroid.R;
-import com.ldl.playandroid.base.BaseContract;
-import com.ldl.playandroid.base.BaseFragment;
+
 /**
  * Author：LDL Time：2019/3/4
  * Class Comment：

@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">ModuleHome</string>
+    <string name="app_name">PlayAndroid</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="title_home">首页</string>
+    <string name="title_knowledgesystem">知识体系</string>
+    <string name="title_my">我的</string>
 </resources>

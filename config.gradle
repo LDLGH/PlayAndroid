@@ -12,7 +12,7 @@ ext {
 
     //因为support库都是同一个版本，单独拎出来，方便修改
     dependVersion = [
-            support: "28.0.0-alpha1"
+            support: "28.0.0"
     ]
 
     dependencies = [
@@ -31,22 +31,25 @@ ext {
             "adapter-rxjava2"       :"com.squareup.retrofit2:adapter-rxjava2:2.4.0",
 
             //rxJava
-            "rxjava2"           :"io.reactivex.rxjava2:rxjava:2.2.2",
-            "rxandroid"         :"io.reactivex.rxjava2:rxandroid:2.1.0",
-            "rxlifecycle2"        : "com.trello.rxlifecycle2:rxlifecycle:2.2.2",
-            "rxlifecomponents"    : "com.trello.rxlifecycle2:rxlifecycle-components:2.2.2",
+            "rxjava2"               :"io.reactivex.rxjava2:rxjava:2.2.2",
+            "rxandroid"             :"io.reactivex.rxjava2:rxandroid:2.1.0",
+            "rxlifecycle2"          : "com.trello.rxlifecycle2:rxlifecycle:2.2.2",
+            "rxlifecomponents"      : "com.trello.rxlifecycle2:rxlifecycle-components:2.2.2",
 
-            "glide"             :"com.github.bumptech.glide:glide:4.8.0",
-            "glide-compiler"    :"com.github.bumptech.glide:compiler:4.8.0",
+            "glide"                 :"com.github.bumptech.glide:glide:4.8.0",
+            "glide-compiler"        :"com.github.bumptech.glide:compiler:4.8.0",
 
-            "butterknife"             :"com.jakewharton:butterknife:8.8.1",
-            "butterknife-compiler"    :"com.jakewharton:butterknife-compiler:8.8.1",
+            "butterknife"           :"com.jakewharton:butterknife:9.0.0",
+            "butterknife-compiler"  :"com.jakewharton:butterknife-compiler:9.0.0",
 
             "BaseAdapterHelper"     :"com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30",
 
-            "utilcode"      :"com.blankj:utilcode:1.20.3",
+            "utilcode"              :"com.blankj:utilcode:1.20.3",
 
-            "agentweb"      :"com.just.agentweb:agentweb:4.0.2",
+            "agentweb"              :"com.just.agentweb:agentweb:4.0.2",
+
+            "arouter_api"           : 'com.alibaba:arouter-api:1.4.0',
+            "arouter_compiler"      : 'com.alibaba:arouter-compiler:1.2.1'
     ]
 
 

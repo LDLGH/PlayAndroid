@@ -1,4 +1,4 @@
-package razerdp.github.com.lib.api;
+package com.example.baselibrary.base;
 
 import android.app.Activity;
 import android.app.Application;
