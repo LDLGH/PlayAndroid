@@ -17,4 +17,10 @@ public interface RouterList {
         String key_url = "url";
         int requestCode = 0x20;
     }
+
+    @Retention(RetentionPolicy.SOURCE)
+    @interface LoginActivity {
+        String path = "/chat/login";
+        int requestCode = 0x20;
+    }
 }

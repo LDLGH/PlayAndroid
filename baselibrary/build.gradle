@@ -57,6 +57,8 @@ dependencies {
     api rootProject.ext.dependencies["rxandroid"]
     api rootProject.ext.dependencies["rxlifecycle2"]
     api rootProject.ext.dependencies["rxlifecomponents"]
+    api rootProject.ext.dependencies["rxrelay2"]
+    api rootProject.ext.dependencies["rxbus"]
 
     api rootProject.ext.dependencies["glide"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]

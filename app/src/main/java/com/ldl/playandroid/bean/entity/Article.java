@@ -1,9 +1,11 @@
 package com.ldl.playandroid.bean.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Article extends Entity {
+public class Article extends Entity implements Serializable {
 
+    private static final long serialVersionUID = -7287200345482686021L;
 
     private int offset;
     private int size;

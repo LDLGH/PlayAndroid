@@ -1,5 +1,6 @@
 package com.example.baselibrary.base;
 
+import android.app.ProgressDialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -7,8 +8,12 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.rxbus.RxBus;
 import com.blankj.utilcode.util.NetworkUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.example.baselibrary.utils.Event;
+import com.example.baselibrary.utils.RxBusManager;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
@@ -20,6 +25,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
     protected T mPresenter;
     protected Toolbar mToolbar;
     private Unbinder unbinder;
+    private ProgressDialog progressDialog;
 
     protected abstract @LayoutRes
     int getLayoutId();
@@ -32,6 +38,10 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
+        if (isRegisterRxBus()) {
+            RxBusManager.register(this, this::receiveEvent);
+        }
+        ARouter.getInstance().inject(this);
         unbinder = ButterKnife.bind(this);
 //        initToolBar();
         mPresenter = initPresenter();
@@ -43,18 +53,29 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (isRegisterRxBus()) {
+            RxBusManager.unregister(this);
+        }
         unbinder.unbind();
         detachView();
     }
 
     @Override
     public void showLoading() {
-
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.setMessage("加载中");
+        }
+        progressDialog.show();
     }
 
     @Override
     public void hideLoading() {
-
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
     }
 
     @Override
@@ -125,4 +146,23 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
             mPresenter.detachView();
         }
     }
+
+    /**
+     * 是否注册事件分发
+     *
+     * @return true绑定RxBus事件分发，默认不绑定，子类需要绑定的话复写此方法返回true.
+     */
+    protected boolean isRegisterRxBus() {
+        return false;
+    }
+
+    /**
+     * 接收到分发到事件
+     *
+     * @param event 事件
+     */
+    protected void receiveEvent(Event event) {
+
+    }
+
 }
